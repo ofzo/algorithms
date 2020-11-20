@@ -5,39 +5,41 @@ import MergeSort from "./MergeSort"
 import QuickSort from "./QuickSort"
 import SelectSort from "./SelectSort"
 
-var arr: Number[] = [5, 4, 3, 2, 6, 9, 8, 2, 0, 1]
-var result: Number[] = [0, 1, 2, 2, 3, 4, 5, 6, 8, 9]
+var arr: number[] = []
+var result: number[] = []
 function resetArr() {
-    arr = [5, 4, 3, 2, 6, 9, 8, 2, 0, 1]
+    for (let index = 0; index < 1000; index++) {
+        arr[index] = Math.floor(Math.random() * 10000)
+    }
+    result = [...arr].sort((a: number, b: number) => a - b)
 }
+var count = 0
+beforeEach(() => {
+    count++
+    resetArr()
+})
 describe("sort", () => {
     it("BubbleSort", () => {
-        resetArr()
         BubbleSort(arr)
         expect(arr).toEqual(result)
     })
     it("SelectSort", () => {
-        resetArr()
         SelectSort(arr)
         expect(arr).toEqual(result)
     })
     it("InsertSort", () => {
-        resetArr()
         InsertSort(arr)
         expect(arr).toEqual(result)
     })
     it("MergeSort", () => {
-        resetArr()
-        arr = MergeSort(arr)
-        expect(arr).toEqual(result)
+        let r = MergeSort(arr)
+        expect(r).toEqual(result)
     })
     it("HeapSort", () => {
-        resetArr()
-        arr = HeapSort(arr)
-        expect(arr).toEqual(result)
+        let r = HeapSort(arr)
+        expect(r).toEqual(result)
     })
     it("QuickSort", () => {
-        resetArr()
         QuickSort(arr)
         expect(arr).toEqual(result)
     })
