@@ -9,7 +9,7 @@ var arr: number[] = []
 var result: number[] = []
 function resetArr() {
     for (let index = 0; index < 100; index++) {
-        arr[index] = Math.floor(Math.random() * 1000)
+        arr[index] = Math.floor(Math.random() * 100000)
     }
     result = [...arr].sort((a: number, b: number) => a - b)
 }
