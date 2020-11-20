@@ -1,6 +1,7 @@
 import { InteractiveTreeSearch } from "./InteractiveTreeSearch";
 import { RecursionTreeSearch } from "./RecursionTreeSearch";
 import * as tree from "./tree";
+import TreeDelete from "./TreeDelete";
 import TreeInsert from "./TreeInsert";
 import { TreeMaximum } from "./TreeMaximum";
 import { TreeMinimum } from "./TreeMinimum";
@@ -8,6 +9,11 @@ import TreePredecessor from "./TreePredecessor";
 import TreeSuccessor from "./TreeSuccessor";
 
 let values = Object.values(tree.nodes)
+
+beforeEach(() => {
+    tree.resetTree()
+})
+
 
 describe("search", () => {
     it("recursion", () => {
@@ -24,7 +30,7 @@ describe("search", () => {
 
 
 it("get maximum", () => {
-    expect(TreeMaximum(tree.root)).toEqual(tree.node20)
+    expect(TreeMaximum(tree.root)).toEqual(tree.node22)
 })
 
 it("get minimum", () => {
@@ -75,8 +81,36 @@ describe("insert", () => {
         expect(tree.node9.left?.value).toBe(8)
     })
     test("insert a node", () => {
-        let node = tree.createNode(22)
+        let node = tree.createNode(24)
         TreeInsert(tree.root, node)
-        expect(tree.node20.right?.value).toBe(22)
+        expect(tree.node22.right?.value).toBe(24)
+    })
+})
+
+describe("delete", () => {
+    it("empty left and right", () => {
+        TreeDelete(tree.root, tree.node2)
+        expect(tree.node3.left).toEqual(null)
+    })
+    it("empty left and right", () => {
+        TreeDelete(tree.root, tree.node4)
+        expect(tree.node3.right).toEqual(null)
+    })
+    it("empty right", () => {
+        TreeDelete(tree.root, tree.node13)
+        expect(tree.node7.right?.value).toEqual(tree.node9.value)
+    })
+    it("empty left", () => {
+        TreeDelete(tree.root, tree.node7)
+        expect(tree.node6.right?.value).toEqual(tree.node13.value)
+    })
+    it("has left and right and successor is right", () => {
+        TreeDelete(tree.root, tree.node6)
+        expect(tree.node15.left?.value).toEqual(tree.node7.value)
+    })
+    it("has left and right and successor is not right", () => {
+        var node = TreeSuccessor(tree.node18)
+        TreeDelete(tree.root, tree.node18)
+        expect(tree.node15.right?.value).toEqual(tree.node19.value)
     })
 })
