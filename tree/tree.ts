@@ -20,17 +20,22 @@ export type Node<T> = {
     right: Node<T> | null
 }
 
-export const node2: Node<Number> = { parent: null, value: 2, left: null, right: null }
-export const node3: Node<Number> = { parent: null, value: 3, left: null, right: null }
-export const node4: Node<Number> = { parent: null, value: 4, left: null, right: null }
-export const node6: Node<Number> = { parent: null, value: 6, left: null, right: null }
-export const node7: Node<Number> = { parent: null, value: 7, left: null, right: null }
-export const node9: Node<Number> = { parent: null, value: 9, left: null, right: null }
-export const node13: Node<Number> = { parent: null, value: 13, left: null, right: null }
-export const node15: Node<Number> = { parent: null, value: 15, left: null, right: null }
-export const node17: Node<Number> = { parent: null, value: 17, left: null, right: null }
-export const node18: Node<Number> = { parent: null, value: 18, left: null, right: null }
-export const node20: Node<Number> = { parent: null, value: 20, left: null, right: null }
+export function createNode<T>(value: T): Node<T> {
+    return { parent: null, value, left: null, right: null }
+}
+
+
+export const node2: Node<Number> = createNode(2)
+export const node3: Node<Number> = createNode(3)
+export const node4: Node<Number> = createNode(4)
+export const node6: Node<Number> = createNode(6)
+export const node7: Node<Number> = createNode(7)
+export const node9: Node<Number> = createNode(9)
+export const node13: Node<Number> = createNode(13)
+export const node15: Node<Number> = createNode(15)
+export const node17: Node<Number> = createNode(17)
+export const node18: Node<Number> = createNode(18)
+export const node20: Node<Number> = createNode(20)
 
 export const nodes = {
     node2,
