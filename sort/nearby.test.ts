@@ -9,14 +9,14 @@ var arr: number[] = []
 var result: number[] = []
 function resetArr() {
     for (let index = 0; index < 100; index++) {
-        arr[index] = Math.floor(Math.random() * 1000)
+        arr[index] = Math.floor(Math.random() * 10)  // 有大量重复的数据
     }
     result = [...arr].sort((a: number, b: number) => a - b)
 }
 beforeEach(() => {
     resetArr()
 })
-describe("normal sort", () => {
+describe("nearby sort", () => {
     it("BubbleSort", () => {
         BubbleSort(arr)
         expect(arr).toEqual(result)

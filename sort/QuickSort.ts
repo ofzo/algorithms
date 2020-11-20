@@ -14,10 +14,12 @@ export default function QuickSort(arr: Number[], left = 0, right = arr.length) {
     var base = arr[key];
     arr[key] = arr[left];
     arr[left] = base;
-
+    // [2,4,4,3]
+    // [left, i)        [i, j)           [j ,right)
+    //                        current
     var current = left + 1, i = left, j = right - 1;
 
-    while (current < j) {
+    while (current <= j) {
 
         if (arr[current] < base) {
             var t = arr[current];
@@ -36,5 +38,5 @@ export default function QuickSort(arr: Number[], left = 0, right = arr.length) {
     }
 
     QuickSort(arr, left, i);
-    QuickSort(arr, j, right);
+    QuickSort(arr, j + 1, right);
 }
