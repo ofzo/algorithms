@@ -1,6 +1,9 @@
+import InsertSort from "./InsertSort";
+
 export default function MergeSort(arr: Number[], left = 0, right = arr.length): Number[] {
 
-    if (right - left < 2) {
+    if (right - left <= 10) {
+        InsertSort(arr);
         return arr;
     }
 
