@@ -2,7 +2,7 @@ import InsertSort from "./InsertSort";
 
 
 export default function QuickSort(arr: Number[], left = 0, right = arr.length) {
-    if (right - left <= 4) {
+    if (right - left <= 10) {
         InsertSort(arr, left, right);
         return;
     }
