@@ -27,126 +27,174 @@ export function createNode<T>(value: T): Node<T> {
 }
 
 
-export var node2: Node<Number> = createNode(2)
-export var node3: Node<Number> = createNode(3)
-export var node4: Node<Number> = createNode(4)
-export var node6: Node<Number> = createNode(6)
-export var node7: Node<Number> = createNode(7)
-export var node9: Node<Number> = createNode(9)
-export var node13: Node<Number> = createNode(13)
-export var node15: Node<Number> = createNode(15)
-export var node17: Node<Number> = createNode(17)
-export var node18: Node<Number> = createNode(18)
-export var node20: Node<Number> = createNode(20)
-export var node19: Node<Number> = createNode(19)
-export var node22: Node<Number> = createNode(22)
+export var node200: Node<Number> = createNode(200)
+export var node300: Node<Number> = createNode(300)
+export var node400: Node<Number> = createNode(400)
+export var node600: Node<Number> = createNode(600)
+export var node700: Node<Number> = createNode(700)
+export var node900: Node<Number> = createNode(900)
+export var node1300: Node<Number> = createNode(1300)
+export var node1500: Node<Number> = createNode(1500)
+export var node1700: Node<Number> = createNode(1700)
+export var node1750: Node<Number> = createNode(1750)
+export var node1800: Node<Number> = createNode(1800)
+export var node1900: Node<Number> = createNode(1900)
+export var node1950: Node<Number> = createNode(1950)
+export var node2000: Node<Number> = createNode(2000)
+export var node2050: Node<Number> = createNode(2050)
+export var node2100: Node<Number> = createNode(2100)
+export var node2200: Node<Number> = createNode(2200)
 
 export const nodes = {
-    node2,
-    node3,
-    node4,
-    node6,
-    node7,
-    node9,
-    node13,
-    node15,
-    node17,
-    node18,
-    node19,
-    node20,
-    node22
+    node200,
+    node300,
+    node400,
+    node600,
+    node700,
+    node900,
+    node1300,
+    node1500,
+    node1700,
+    node1750,
+    node1800,
+    node1900,
+    node1950,
+    node2000,
+    node2050,
+    node2100,
+    node2200
 }
-export var root: Node<Number> = node15
+export var root: Node<Number> = node1500
 
-root.left = node6
-root.right = node18
-node6.parent = root
-node18.parent = root
+root.left = node600
+root.right = node1800
+node600.parent = root
+node1800.parent = root
 
 // 6
-node6.left = node3
-node6.right = node7
-node3.parent = node6
-node7.parent = node6
+node600.left = node300
+node600.right = node700
+node300.parent = node600
+node700.parent = node600
+
+//17
+node1700.right = node1750
+node1750.parent = node1700
 
 // 18
-node18.left = node17
-node18.right = node20
-node17.parent = node18
-node20.parent = node18
+node1800.left = node1700
+node1800.right = node2000
+node1700.parent = node1800
+node2000.parent = node1800
 
 // 3
-node3.left = node2
-node3.right = node4
-node2.parent = node3
-node4.parent = node3
+node300.left = node200
+node300.right = node400
+node200.parent = node300
+node400.parent = node300
 
 // 7
-node7.right = node13
-node13.parent = node7
+node700.right = node1300
+node1300.parent = node700
 
 // 13
-node13.left = node9
-node9.parent = node13
+node1300.left = node900
+node900.parent = node1300
+
+//19
+node1900.right = node1950
+node1950.parent = node1900
 
 //20
-node20.left = node19
-node20.right = node22
-node19.parent = node20
-node22.parent = node20
+node2000.left = node1900
+node2000.right = node2200
+node1900.parent = node2000
+node2200.parent = node2000
+
+//21
+node2100.left = node2050
+node2100.parent = node2200
+node2050.parent = node2100
+
+//22
+node2200.left = node2100
+node2100.parent = node2200
 
 export function resetTree() {
-    node2 = createNode(2)
-    node3 = createNode(3)
-    node4 = createNode(4)
-    node6 = createNode(6)
-    node7 = createNode(7)
-    node9 = createNode(9)
-    node13 = createNode(13)
-    node15 = createNode(15)
-    node17 = createNode(17)
-    node18 = createNode(18)
-    node20 = createNode(20)
+    node200 = createNode(200)
+    node300 = createNode(300)
+    node400 = createNode(400)
+    node600 = createNode(600)
+    node700 = createNode(700)
+    node900 = createNode(900)
+    node1300 = createNode(1300)
+    node1500 = createNode(1500)
+    node1700 = createNode(1700)
+    node1750 = createNode(1750)
+    node1800 = createNode(1800)
+    node1900 = createNode(1900)
+    node1950 = createNode(1950)
+    node2000 = createNode(2000)
+    node2050 = createNode(2050)
+    node2100 = createNode(2100)
+    node2200 = createNode(2200)
 
 
     //
 
-    root = node15
+    root = node1500
 
-    root.left = node6
-    root.right = node18
-    node6.parent = root
-    node18.parent = root
+    root.left = node600
+    root.right = node1800
+    node600.parent = root
+    node1800.parent = root
 
     // 6
-    node6.left = node3
-    node6.right = node7
-    node3.parent = node6
-    node7.parent = node6
+    node600.left = node300
+    node600.right = node700
+    node300.parent = node600
+    node700.parent = node600
 
     // 18
-    node18.left = node17
-    node18.right = node20
-    node17.parent = node18
-    node20.parent = node18
+    node1800.left = node1700
+    node1800.right = node2000
+    node1700.parent = node1800
+    node2000.parent = node1800
 
     // 3
-    node3.left = node2
-    node3.right = node4
-    node2.parent = node3
-    node4.parent = node3
+    node300.left = node200
+    node300.right = node400
+    node200.parent = node300
+    node400.parent = node300
 
     // 7
-    node7.right = node13
-    node13.parent = node7
+    node700.right = node1300
+    node1300.parent = node700
 
     // 13
-    node13.left = node9
-    node9.parent = node13
+    node1300.left = node900
+    node900.parent = node1300
+
+    //17
+    node1700.right = node1750
+    node1750.parent = node1700
+
+    //19
+    node1900.right = node1950
+    node1950.parent = node1900
 
     //20
-    node20.left = node19
-    node20.right = node22
-    node19.parent = node20
-    node22.parent = node20
+    node2000.left = node1900
+    node2000.right = node2200
+    node1900.parent = node2000
+    node2200.parent = node2000
+
+    //21
+    node2100.left = node2050
+    node2100.parent = node2200
+    node2050.parent = node2100
+
+    //22
+    node2200.left = node2100
+    node2100.parent = node2200
 }

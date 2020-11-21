@@ -5,24 +5,24 @@ import TreeSuccessor from "./TreeSuccessor";
 export default function TreeDelete<T>(tree: Node<T> | null, node: Node<T>) {
 
     var parent = null
-    var current: Node<T> | null = tree
-    while (current && current.value !== node.value) {
-        if (current.value < node.value) {
-            parent = current
-            current = current.right
+    var del_node: Node<T> | null = tree
+    while (del_node && del_node.value !== node.value) {
+        if (del_node.value < node.value) {
+            parent = del_node
+            del_node = del_node.right
         } else {
-            parent = current
-            current = current.left
+            parent = del_node
+            del_node = del_node.left
         }
     }
-    if (!current) {
+    if (!del_node) {
         return //节点不在树中
     }
 
     //! 1.
-    if (!current.left && !current.right) {
+    if (!del_node.left && !del_node.right) {
         if (parent) {
-            if (parent.left === current) {
+            if (parent.left === del_node) {
                 parent.left = null
             } else {
                 parent.right = null
@@ -34,41 +34,47 @@ export default function TreeDelete<T>(tree: Node<T> | null, node: Node<T>) {
         return
     }
     //! 2.
-    if (!current.left) {
+    if (!del_node.left && del_node.right) { //has right
         if (parent) {
-            if (parent.left === current) {
-                parent.left = current.right
+            if (parent.left === del_node) {
+                parent.left = del_node.right
+                del_node.right.parent = parent
             } else {
-                parent.right = current.right
+                parent.right = del_node.right
+                del_node.right.parent = parent
             }
         } else {
-            tree = current.right
+            tree = del_node.right
         }
         return
     }
-    if (!current.right) {
+    if (!del_node.right && del_node.left) {
         if (parent) {
-            if (parent.left === current) {
-                parent.left = current.left
+            if (parent.left === del_node) {
+                parent.left = del_node.left
+                del_node.left.parent = parent
             } else {
-                parent.right = current.left
+                parent.right = del_node.left
+                del_node.left.parent = parent
             }
         } else {
-            tree = current.left
+            tree = del_node.left
         }
         return
     }
 
-    var Y = TreeSuccessor(current)
+    var Y = TreeSuccessor(del_node)
     if (Y) {
-        if (Y === current.right) {
+        if (Y === del_node.right) {
             //! 3.1
-            Y.left = current.left
+            Y.left = del_node.left
             if (parent) {
-                if (parent.left === current) {
+                if (parent.left === del_node) {
                     parent.left = Y
+                    Y.parent = parent
                 } else {
                     parent.right = Y
+                    Y.parent = parent
                 }
             } else {
                 // 要删除的是根节点
@@ -80,13 +86,21 @@ export default function TreeDelete<T>(tree: Node<T> | null, node: Node<T>) {
             if (Y.parent) { // true
                 Y.parent.left = Y_r // 一定是左节点
             }
-            Y.right = current.right
-            Y.left = current.left
+            Y.right = del_node.right
+            Y.left = del_node.left
+            if (del_node.left) {
+                del_node.left.parent = Y
+            }
+            if (del_node.right) {
+                del_node.right.parent = Y
+            }
             if (parent) {
-                if (parent.left === current) {
+                if (parent.left === del_node) {
                     parent.left = Y
+                    Y.parent = parent
                 } else {
                     parent.right = Y
+                    Y.parent = parent
                 }
             } else {
                 // 要删除的是根节点
