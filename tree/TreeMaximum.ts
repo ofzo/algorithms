@@ -1,9 +1,9 @@
-import { Node } from "./tree";
+import { Node, Tree } from "./tree";
 
 
-export function TreeMaximum<T>(node: Node<T> | null): Node<T> | null {
+export function TreeMaximum<T>(tree: Tree<T>): Node<T> | null {
 
-    var current = node;
+    var current = tree.root;
     while (current && current.right) {
         current = current.right;
     }

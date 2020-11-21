@@ -120,6 +120,12 @@ node2050.parent = node2100
 node2200.left = node2100
 node2100.parent = node2200
 
+export type Tree<T> = {
+    root: Node<T> | null
+}
+
+export var Tree: Tree<Number> = { root }
+
 export function resetTree() {
     node200 = createNode(200)
     node300 = createNode(300)
@@ -139,9 +145,7 @@ export function resetTree() {
     node2100 = createNode(2100)
     node2200 = createNode(2200)
 
-
     //
-
     root = node1500
 
     root.left = node600
@@ -197,4 +201,6 @@ export function resetTree() {
     //22
     node2200.left = node2100
     node2100.parent = node2200
+
+    Tree.root = root
 }

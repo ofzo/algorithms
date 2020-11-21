@@ -1,9 +1,9 @@
-import { Node } from "./tree";
+import { Node, Tree } from "./tree";
 
 
-export function TreeMinimum<T>(node: Node<T> | null): Node<T> | null {
+export function TreeMinimum<T>(tree: Tree<T>): Node<T> | null {
 
-    var current = node;
+    var current = tree.root;
     while (current && current.left) {
         current = current.left;
     }

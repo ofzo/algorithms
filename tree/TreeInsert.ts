@@ -1,9 +1,9 @@
-import { Node } from "./tree";
+import { Node, Tree } from "./tree";
 
 
-export default function TreeInsert<T>(tree: Node<T>, node: Node<T>) {
+export default function TreeInsert<T>(tree: Tree<T>, node: Node<T>) {
     var parent = null
-    var current: Node<T> | null = tree
+    var current: Node<T> | null = tree.root
 
     while (current) {
         if (current.value > node.value) {
@@ -14,12 +14,15 @@ export default function TreeInsert<T>(tree: Node<T>, node: Node<T>) {
             current = current.right
         }
     }
-    node.parent = parent
     if (!parent) {
-        tree = node
-    } else if (parent.value > node.value) {
+        tree.root = node
+        return
+    }
+    if (parent.value > node.value) {
+        node.parent = parent
         parent.left = node
     } else {
+        node.parent = parent
         parent.right = node
     }
 }

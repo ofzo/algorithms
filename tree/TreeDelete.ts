@@ -1,11 +1,11 @@
-import { Node } from "./tree";
+import { Node, Tree } from "./tree";
 import TreeSuccessor from "./TreeSuccessor";
 
 
-export default function TreeDelete<T>(tree: Node<T> | null, node: Node<T>) {
+export default function TreeDelete<T>(tree: Tree<T>, node: Node<T>) {
 
     var parent = null
-    var del_node: Node<T> | null = tree
+    var del_node: Node<T> | null = tree.root
     while (del_node && del_node.value !== node.value) {
         if (del_node.value < node.value) {
             parent = del_node
@@ -29,7 +29,7 @@ export default function TreeDelete<T>(tree: Node<T> | null, node: Node<T>) {
             }
         } else {
             // 要删除的是根节点
-            tree = null
+            tree.root = null
         }
         return
     }
@@ -44,7 +44,7 @@ export default function TreeDelete<T>(tree: Node<T> | null, node: Node<T>) {
                 del_node.right.parent = parent
             }
         } else {
-            tree = del_node.right
+            tree.root = del_node.right
         }
         return
     }
@@ -58,12 +58,12 @@ export default function TreeDelete<T>(tree: Node<T> | null, node: Node<T>) {
                 del_node.left.parent = parent
             }
         } else {
-            tree = del_node.left
+            tree.root = del_node.left
         }
         return
     }
 
-    var Y = TreeSuccessor(del_node)
+    var Y = TreeSuccessor({ root: del_node })
     if (Y) {
         if (Y === del_node.right) {
             //! 3.1
@@ -78,13 +78,16 @@ export default function TreeDelete<T>(tree: Node<T> | null, node: Node<T>) {
                 }
             } else {
                 // 要删除的是根节点
-                tree = Y
+                tree.root = Y
             }
         } else {
             //!3.2
             var Y_r = Y.right
             if (Y.parent) { // true
                 Y.parent.left = Y_r // 一定是左节点
+                if (Y_r) {
+                    Y_r.parent = Y.parent
+                }
             }
             Y.right = del_node.right
             Y.left = del_node.left
@@ -104,7 +107,7 @@ export default function TreeDelete<T>(tree: Node<T> | null, node: Node<T>) {
                 }
             } else {
                 // 要删除的是根节点
-                tree = Y
+                tree.root = Y
             }
         }
         return
