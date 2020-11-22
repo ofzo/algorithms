@@ -1,12 +1,7 @@
-import { Node, Tree } from "./tree";
+import { Node } from "./tree";
 import { TreeMaximum } from "./TreeMaximum";
 
-export default function TreePredecessor<T>(tree: Tree<T>): Node<T> | null {
-    var node: Node<T> | null = tree.root
-
-    if (!node) {
-        return null
-    }
+export default function TreePredecessor<T>(node: Node<T>): Node<T> | null {
 
     if (node.left) {
         return TreeMaximum({ root: node.left });

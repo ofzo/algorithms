@@ -63,7 +63,7 @@ export default function TreeDelete<T>(tree: Tree<T>, node: Node<T>) {
         return
     }
 
-    var Y = TreeSuccessor({ root: del_node })
+    var Y = TreeSuccessor(del_node)
     if (Y) {
         if (Y === del_node.right) {
             //! 3.1

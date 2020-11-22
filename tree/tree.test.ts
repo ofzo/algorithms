@@ -40,30 +40,25 @@ it("minimum", () => {
 describe("predecessor", () => {
     test("index > 0", () => {
         values.slice(1).forEach((node, index) => {
-            expect(TreePredecessor({ root: node })).toEqual(values[index])
+            expect(TreePredecessor(node)).toEqual(values[index])
         })
     })
     test("index = 0", () => {
-        expect(TreePredecessor({ root: values[0] })).toEqual(null)
-    })
-    test("null tree", () => {
-        expect(TreePredecessor({ root: null })).toBe(null)
+        expect(TreePredecessor(values[0])).toEqual(null)
     })
 })
 
-describe("get successor", () => {
+describe("successor", () => {
     let length = values.length
     test("index < values.length", () => {
         values.slice(0, -1).forEach((node, index) => {
-            expect(TreeSuccessor({ root: node })).toEqual(values[index + 1])
+            expect(TreeSuccessor(node)).toEqual(values[index + 1])
         })
     })
     test("index = values.length", () => {
-        expect(TreeSuccessor({ root: values[length - 1] })).toEqual(null)
+        expect(TreeSuccessor(values[length - 1])).toEqual(null)
     })
-    test("null tree", () => {
-        expect(TreeSuccessor({ root: null })).toBe(null)
-    })
+
 })
 describe("insert", () => {
     test("insert a node", () => {

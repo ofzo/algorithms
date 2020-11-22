@@ -1,13 +1,7 @@
-import { Node, Tree } from "./tree";
+import { Node } from "./tree";
 import { TreeMinimum } from "./TreeMinimum";
 
-export default function TreeSuccessor<T>(tree: Tree<T>): Node<T> | null {
-
-    var node: Node<T> | null = tree.root
-
-    if (!node) {
-        return null
-    }
+export default function TreeSuccessor<T>(node: Node<T>): Node<T> | null {
 
     if (node.right) {
         return TreeMinimum({ root: node.right });
