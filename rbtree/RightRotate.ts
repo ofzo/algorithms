@@ -4,12 +4,10 @@ import { nil, Node, Tree } from "./rbtree";
 
 export default function RightRotate<T>(tree: Tree<T>, node: Node<T>) {
 
-    let has = InteractiveTreeSearch(tree, node.value)
-    if (!has) {
+    if (!tree.root || !InteractiveTreeSearch(tree, node.value)) {
         throw new Error("node 不在树中")
     }
 
-    if (!tree.root) return
 
     if (node.left === nil) {
         return
@@ -28,7 +26,7 @@ export default function RightRotate<T>(tree: Tree<T>, node: Node<T>) {
     }
 
     let parent = node.parent as Node<T> // 8
-    let left_right = left.right  //4
+
     if (parent.left === node) { //node是左节点
         parent.left = left
     } else { //node是右节点
