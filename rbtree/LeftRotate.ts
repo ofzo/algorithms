@@ -19,21 +19,19 @@ export default function LeftRotate<T>(tree: Tree<T>, node: Node<T>) {
             //  node 是根节点
             if (node.right !== nil) {
                 tree.root = right
-                right.parent = tree.root
+                right.parent = nil
             }
         }
-        return
+    } else {
+        let parent = node.parent as Node<T>
+        if (parent.left === node) { //node是左节点
+            parent.left = right
+        } else { //node是右节点
+            parent.right = right
+        }
+
+        right.parent = parent
     }
-
-    let parent = node.parent as Node<T>
-
-    if (parent.left === node) { //node是左节点
-        parent.left = right
-    } else { //node是右节点
-        parent.right = right
-    }
-
-    right.parent = parent
 
     node.right = right.left
     right.left.parent = node

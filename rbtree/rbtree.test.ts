@@ -1,12 +1,45 @@
 import { InteractiveTreeSearch } from "./InteractiveTreeSearch"
 import LeftRotate from "./LeftRotate"
-import init, { createNode, Tree } from "./rbtree"
+import init, { createNode, Node, Tree } from "./rbtree"
 import { RecursionTreeSearch } from "./RecursionTreeSearch"
 import RightRotate from "./RightRotate"
 import { TreeMaximum } from "./TreeMaximum"
 import { TreeMinimum } from "./TreeMinimum"
 import TreePredecessor from "./TreePredecessor"
 import TreeSuccessor from "./TreeSuccessor"
+
+function link<T>(parent: Node<T>, left: Node<T> | null, right: Node<T> | null) {
+    if (left) {
+        parent.left = left
+        left.parent = parent
+    }
+    if (right) {
+        parent.right = right
+        right.parent = parent
+    }
+}
+
+var node11 = createNode(11, "BLACK")
+var node2 = createNode(2, "RED")
+var node1 = createNode(1, "BLACK")
+var node7 = createNode(7, "BLACK")
+var node5 = createNode(5, "RED")
+var node8 = createNode(8, "RED")
+var node14 = createNode(14, "BLACK")
+var node15 = createNode(15, "RED")
+var tree = init()
+
+beforeEach(() => {
+    tree.root = node11
+    link(node11, node2, node14)
+    link(node2, node1, node7)
+    link(node7, node5, node8)
+    link(node14, null, node15)
+})
+
+
+
+
 
 describe("find node", () => {
     it("find node", () => {
@@ -171,6 +204,19 @@ describe("rotate right", () => {
             RightRotate(tree, node7)
         }).toThrowError("node 不在树中")
     })
+    it("test right rotate", () => {
+        tree.root = node11
+        link(node11, node7, node14)
+        link(node7, node2, node8)
+        link(node2, node1, node5)
+        link(node14, null, node15)
+        RightRotate(tree, node11)
+
+        expect(tree.root).toBe(node7)
+        expect(node7.left).toBe(node2)
+        expect((node7.right as Node<number>).value).toBe(node11.value)
+        expect(node11.left).toBe(node8)
+    })
 })
 
 
@@ -285,6 +331,12 @@ describe("rotate left", () => {
         expect(() => {
             LeftRotate(tree, node7)
         }).toThrowError("node 不在树中")
+    })
+    it("test left rotate", () => {
+        LeftRotate(tree, node2)
+        expect(node2.parent).toBe(node7)
+        expect(node7.left).toBe(node2)
+        expect(node2.right).toBe(node5)
     })
 })
 
