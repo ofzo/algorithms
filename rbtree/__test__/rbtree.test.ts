@@ -1,12 +1,12 @@
-import { InteractiveTreeSearch } from "./InteractiveTreeSearch"
-import LeftRotate from "./LeftRotate"
-import init, { createNode, Node, Tree } from "./rbtree"
-import { RecursionTreeSearch } from "./RecursionTreeSearch"
-import RightRotate from "./RightRotate"
-import { TreeMaximum } from "./TreeMaximum"
-import { TreeMinimum } from "./TreeMinimum"
-import TreePredecessor from "./TreePredecessor"
-import TreeSuccessor from "./TreeSuccessor"
+import { InteractiveTreeSearch } from "../InteractiveTreeSearch"
+import LeftRotate from "../LeftRotate"
+import init, { createNode, Node, Tree } from "../rbtree"
+import { RecursionTreeSearch } from "../RecursionTreeSearch"
+import RightRotate from "../RightRotate"
+import { TreeMaximum } from "../TreeMaximum"
+import { TreeMinimum } from "../TreeMinimum"
+import TreePredecessor from "../TreePredecessor"
+import TreeSuccessor from "../TreeSuccessor"
 
 function link<T>(parent: Node<T>, left: Node<T> | null, right: Node<T> | null) {
     if (left) {

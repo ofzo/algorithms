@@ -1,15 +1,6 @@
-import init, { createNode, Node } from "./rbtree"
-import TreeInsert from "./TreeInsert"
-function link<T>(parent: Node<T>, left: Node<T> | null, right: Node<T> | null) {
-    if (left) {
-        parent.left = left
-        left.parent = parent
-    }
-    if (right) {
-        parent.right = right
-        right.parent = parent
-    }
-}
+import { TreeLink } from "../helper/TreeLink"
+import init, { createNode } from "../rbtree"
+import TreeInsert from "../TreeInsert"
 
 var node9 = createNode(9, "BLACK")
 var node2 = createNode(2, "RED")
@@ -32,10 +23,10 @@ describe("insert", () => {
         var node12 = createNode(12, "BLACK")
         var node15 = createNode(15, "RED")
         tree.root = node9
-        link(node9, node2, node12)
-        link(node2, node1, node7)
-        link(node7, node5, node8)
-        link(node12, null, node15)
+        TreeLink(node9, node2, node12)
+        TreeLink(node2, node1, node7)
+        TreeLink(node7, node5, node8)
+        TreeLink(node12, null, node15)
         var node4 = createNode(4, "RED")
 
         TreeInsert(tree, node4)
@@ -66,10 +57,10 @@ describe("insert", () => {
         var node12 = createNode(12, "BLACK")
         var node15 = createNode(15, "RED")
         tree.root = node9
-        link(node9, node2, node12)
-        link(node2, node1, node7)
-        link(node7, node5, node8)
-        link(node12, null, node15)
+        TreeLink(node9, node2, node12)
+        TreeLink(node2, node1, node7)
+        TreeLink(node7, node5, node8)
+        TreeLink(node12, null, node15)
         var node16 = createNode(16, "RED")
 
         TreeInsert(tree, node16)
@@ -96,10 +87,10 @@ describe("insert", () => {
         var node21 = createNode(21, "BLACK")
 
         tree.root = node11
-        link(node11, node4, node20)
-        link(node4, node5, null)
-        link(node20, node14, node21)
-        link(node14, node12, node16)
+        TreeLink(node11, node4, node20)
+        TreeLink(node4, node5, null)
+        TreeLink(node20, node14, node21)
+        TreeLink(node14, node12, node16)
 
         var node17 = createNode(17, "RED")
 
