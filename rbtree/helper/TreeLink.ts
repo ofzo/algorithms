@@ -10,13 +10,10 @@ export function TreeLink<T>(parent: Node<T>, left: Node<T> | typeof nil | null, 
     if (left) {
         parent.left = left;
         left.parent = parent;
-    } else {
-        parent.left = nil;
     }
+
     if (right) {
         parent.right = right;
         right.parent = parent;
-    } else {
-        parent.right = nil;
     }
 }

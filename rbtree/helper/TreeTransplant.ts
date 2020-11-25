@@ -5,10 +5,10 @@ import { TreeLink } from "./TreeLink";
 /**
  * 用node替换origin
  */
-export default function TreeReplace<T>(tree: Tree<T>, origin: Node<T>, node: Node<T> | typeof nil) {
+export default function TreeTransplant<T>(tree: Tree<T>, origin: Node<T>, node: Node<T> | typeof nil) {
 
 
-    if (TreeInclude(tree, origin)) {
+    if (!TreeInclude(tree, origin)) {
         throw new Error("node 不在树中")
     }
 
